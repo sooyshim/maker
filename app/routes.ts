@@ -1,3 +1,28 @@
-import { type RouteConfig, index } from "@react-router/dev/routes";
+import {
+    type RouteConfig,
+    index,
+    route,
+    prefix,
+    layout,
+} from "@react-router/dev/routes";
 
-export default [index("routes/home.tsx")] satisfies RouteConfig;
+export default [
+    index("common/pages/home-page.tsx"),
+    ...prefix("recipes", [
+        index("features/recipes/pages/recipes-page.tsx"),
+        route("/dashboard", "features/recipes/pages/recipe-dashboard-page.tsx"),
+        ...prefix("/:recipeId", [
+            index("features/recipes/pages/recipe-redirect-page.tsx"),
+            layout("features/recipes/layouts/recipe-layout.tsx", [
+                route("/content", "features/recipes/pages/recipe-page.tsx"),
+                ...prefix("/sent", [
+                    index("features/recipes/pages/sent-page.tsx"),
+                ]),
+            ]),
+        ]),
+        ...prefix("categories", [
+            index("features/recipes/pages/categories-page.tsx"),
+            route("/:category", "features/recipes/pages/category-page.tsx"),
+        ]),
+    ]),
+] satisfies RouteConfig;
