@@ -2,6 +2,11 @@ import { Form } from "react-router";
 import type { Route } from "./+types/home-page";
 import InputPair from "../components/input-pair";
 import { Button } from "~/components/ui/button";
+import { DataTable } from "~/features/recipes/components/ingredients/data-table";
+import {
+    columns,
+    type Ingredient,
+} from "~/features/recipes/components/ingredients/columns";
 
 export const meta: Route.MetaFunction = () => {
     return [
@@ -13,6 +18,14 @@ export const meta: Route.MetaFunction = () => {
             content: "Send your yummy recipes",
         },
     ];
+};
+
+const data: Ingredient = {
+    id: "",
+    name: "",
+    amount: 0,
+    unit: "",
+    optional: false,
 };
 
 export default function HomePage() {
@@ -60,6 +73,19 @@ export default function HomePage() {
                             type="text"
                             placeholder="abc@abc.abc"
                         />
+
+                        <DataTable
+                            caption="Ingredients"
+                            columns={columns}
+                            initialData={data}
+                        />
+
+                        <DataTable
+                            caption="Sauce"
+                            columns={columns}
+                            initialData={data}
+                        />
+
                         <Button type="submit" className="w-full" size="lg">
                             Submit
                         </Button>
