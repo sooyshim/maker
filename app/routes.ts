@@ -15,9 +15,6 @@ export default [
             index("features/recipes/pages/recipe-redirect-page.tsx"),
             layout("features/recipes/layouts/recipe-layout.tsx", [
                 route("/content", "features/recipes/pages/recipe-page.tsx"),
-                ...prefix("/sent", [
-                    index("features/recipes/pages/sent-page.tsx"),
-                ]),
             ]),
         ]),
         ...prefix("categories", [
@@ -25,4 +22,6 @@ export default [
             route("/:category", "features/recipes/pages/category-page.tsx"),
         ]),
     ]),
+    route("/sent", "features/recipes/pages/sent-page.tsx"),
+    route("/login", "features/auth/pages/login-page.tsx"),
 ] satisfies RouteConfig;
