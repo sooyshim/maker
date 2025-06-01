@@ -3,6 +3,7 @@ import type { Route } from "./+types/sent-page";
 import { Form, Link } from "react-router";
 import InputPair from "~/common/components/input-pair";
 import { Separator } from "~/components/ui/separator";
+import { getRecipe } from "../queries";
 
 export const meta: Route.MetaFunction = () => {
     return [
@@ -16,12 +17,18 @@ export const meta: Route.MetaFunction = () => {
     ];
 };
 
-export default function SentPage() {
+export const loader = async () => {
+    const recipe = await getRecipe();
+    return { recipe };
+};
+export default function SentPage({ loaderData }: Route.ComponentProps) {
     return (
         <div className="space-y-20 mt-20">
             <hgroup className="flex flex-col justify-center gap-3 items-center">
                 <h1 className="text-4xl text-primary">
-                    Your recipe is sent successfully!
+                    Your recipe{" "}
+                    {loaderData.recipe ? loaderData.recipe[0].name : null}
+                    &nbsp;is sent successfully!
                 </h1>
                 <p>Save your recipe by creating an account</p>
             </hgroup>
