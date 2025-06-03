@@ -24,4 +24,6 @@ export default [
     ]),
     route("/sent", "features/recipes/pages/sent-page.tsx"),
     route("/login", "features/auth/pages/login-page.tsx"),
+    route("/logout", "features/auth/pages/logout-page.tsx"),
+    route("/join", "features/auth/pages/join-page.tsx"),
 ] satisfies RouteConfig;

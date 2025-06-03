@@ -1,4 +1,4 @@
-import { Form } from "react-router";
+import { data, Form } from "react-router";
 import type { Route } from "./+types/home-page";
 import InputPair from "../components/input-pair";
 import { Button } from "~/components/ui/button";
@@ -23,7 +23,7 @@ export const meta: Route.MetaFunction = () => {
     ];
 };
 
-const data: Ingredient = {
+const initialData: Ingredient = {
     id: "",
     name: "",
     amount: 0,
@@ -114,13 +114,13 @@ export default function HomePage() {
                         <DataTable
                             caption="Ingredients"
                             columns={columns}
-                            initialData={data}
+                            initialData={initialData}
                         />
 
                         <DataTable
                             caption="Sauce"
                             columns={columns}
-                            initialData={data}
+                            initialData={initialData}
                         />
 
                         <InputPair

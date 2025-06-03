@@ -4,6 +4,7 @@ import { Form, Link } from "react-router";
 import InputPair from "~/common/components/input-pair";
 import { Separator } from "~/components/ui/separator";
 import { getRecipe } from "../queries";
+import { makeSSRClient } from "~/supa-client";
 
 export const meta: Route.MetaFunction = () => {
     return [
@@ -17,8 +18,9 @@ export const meta: Route.MetaFunction = () => {
     ];
 };
 
-export const loader = async () => {
-    const recipe = await getRecipe();
+export const loader = async ({ request }: Route.LoaderArgs) => {
+    const { client } = makeSSRClient(request);
+    const recipe = await getRecipe(client);
     return { recipe };
 };
 export default function SentPage({ loaderData }: Route.ComponentProps) {
