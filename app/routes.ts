@@ -26,4 +26,5 @@ export default [
     route("/login", "features/auth/pages/login-page.tsx"),
     route("/logout", "features/auth/pages/logout-page.tsx"),
     route("/join", "features/auth/pages/join-page.tsx"),
+    route("/reminder", "features/auth/pages/reminder-page.tsx"),
 ] satisfies RouteConfig;
