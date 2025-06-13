@@ -13,8 +13,8 @@ export const action = async ({ request }: Route.ActionArgs) => {
     }
 
     const { data, error } = await client.emails.send({
-        from: "",
-        to: "",
+        from: "sooyshim@gmail.com",
+        to: "sooyshim@gmail.com",
         subject: "Welcome to Yum Send!",
         react: <SingUpReminderEmail />,
     });

@@ -45,7 +45,9 @@ export const action = async ({ request }: Route.ActionArgs) => {
     if (signUpError) {
         return { formErrors: null, signUpError: signUpError.message };
     }
-    return redirect("/recipes/dashboard", { headers });
+    return redirect("/reminder", {
+        headers: { ...headers, "x-welcome": "x-welcome-xyz" },
+    });
 };
 export default function JoinPage({ actionData }: Route.ComponentProps) {
     const navigation = useNavigation();
